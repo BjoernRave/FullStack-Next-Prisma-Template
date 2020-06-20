@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "types": ["cypress", "@types/jest", "@types/testing-library__cypress"],
+
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["./components/*"],
+      "pages_/*": ["pages_/*"],
+      "lib/*": ["./lib/*"],
+      "generated": ["./generated"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "__tests__/regenerateDB.js"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

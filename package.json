@@ -1,0 +1,164 @@
+{
+  "name": "template",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">= 12.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "ANALYZE=true yarn build",
+    "postinstall": "yarn generate:nexus && yarn generate:prisma",
+    "generate": "yarn generate:prisma && yarn generate:nexus && yarn generate:codegen",
+    "generate:codegen": "graphql-codegen",
+    "migrate:save": "prisma migrate save --experimental",
+    "migrate:up": "prisma migrate up --experimental",
+    "seed": "ts-node --project tsconfig.prisma.json prisma/seed",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node -P tsconfig.prisma.json --transpile-only prisma/schema",
+    "test": "jest --runInBand",
+    "test:ci": "jest --runInBand --ci",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@nexus/schema": "0.14.0",
+    "@prisma/client": "2.0.0",
+    "@urql/devtools": "^2.0.2",
+    "@urql/exchange-graphcache": "3.0.0",
+    "@urql/exchange-multipart-fetch": "0.1.8",
+    "apollo-server-micro": "^2.14.3",
+    "bcryptjs": "^2.4.3",
+    "graphql": "15.1.0",
+    "graphql-middleware": "4.0.2",
+    "graphql-shield": "7.3.0",
+    "graphql-tag": "^2.10.3",
+    "jsonwebtoken": "8.5.1",
+    "micro-cors": "^0.1.1",
+    "next": "^9.4.4",
+    "next-iron-session": "^4.1.7",
+    "next-offline": "^5.0.2",
+    "next-urql": "^1.0.0",
+    "nexus-prisma": "0.14.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-ssr-prepass": "^1.2.1",
+    "styled-components": "^5.1.1",
+    "urql": "1.9.8",
+    "yup": "^0.29.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.15.2",
+    "@graphql-codegen/introspection": "^1.15.2",
+    "@graphql-codegen/typescript": "^1.15.2",
+    "@graphql-codegen/typescript-operations": "^1.15.2",
+    "@graphql-codegen/typescript-urql": "^1.15.2",
+    "@next/bundle-analyzer": "^9.4.4",
+    "@prisma/cli": "2.0.0",
+    "@testing-library/cypress": "^6.0.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jest": "^26.0.0",
+    "@types/js-cookie": "^2.2.6",
+    "@types/jsonwebtoken": "8.5.0",
+    "@types/micro-cors": "^0.1.1",
+    "@types/node": "14.0.13",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.0",
+    "@types/testing-library__cypress": "^5.0.5",
+    "@types/ua-parser-js": "^0.7.33",
+    "@types/yup": "^0.29.2",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "babel-jest": "^26.0.1",
+    "babel-plugin-graphql-tag": "^2.5.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "cypress": "^4.8.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-react": "^7.20.0",
+    "identity-obj-proxy": "^3.0.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "jest": "^26.0.1",
+    "jest-next-dynamic": "^1.0.1",
+    "prettier": "^2.0.5",
+    "prettier-plugin-organize-imports": "^1.0.4",
+    "ts-node": "8.10.2",
+    "typescript": "3.8.3"
+  },
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      "graphql-tag",
+      [
+        "styled-components",
+        {
+          "ssr": true
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "cypress"
+    ],
+    "extends": [
+      "recommended",
+      "prettier",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:cypress/recommended"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 6,
+      "project": "./tsconfig.json",
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/camelcase": "off",
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/indent": "off",
+      "@typescript-eslint/member-delimiter-style": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "no-console": "off",
+      "react/display-name": 0,
+      "react/prop-types": 0
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next",
+      "config": {
+        "maxLambdaSize": "30mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "service-worker-allowed": "/"
+      },
+      "dest": "/_next/static/service-worker.js"
+    }
+  ]
+}

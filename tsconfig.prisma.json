@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": false,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["./components/*"],
+      "pages_/*": ["pages_/*"],
+      "lib/*": ["./lib/*"],
+      "generated": ["./generated"]
+    }
+  }
+}
