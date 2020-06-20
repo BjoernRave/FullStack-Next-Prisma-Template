@@ -10,6 +10,7 @@ export const schema = makeSchema({
   types: resolvers,
   plugins: [
     nexusPrismaPlugin({
+      experimentalCRUD: true,
       outputs: {
         typegen: getPath('nexus.ts'),
       },

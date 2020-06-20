@@ -8,11 +8,8 @@ type AuthPayload {
 }
 
 type Mutation {
-  createOnePost(data: PostCreateInput!): Post!
-  deleteOnePost(where: PostWhereUniqueInput!): Post
   login(email: String!, password: String!): AuthPayload!
   signup(email: String!, name: String, password: String!, role: String!): AuthPayload!
-  updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
 }
 
 type Post {
@@ -23,72 +20,12 @@ type Post {
   title: String!
 }
 
-input PostCreateInput {
-  author: UserCreateOneWithoutPostsInput
-  content: String
-  published: Boolean
-  title: String!
-}
-
-input PostUpdateInput {
-  author: UserUpdateOneWithoutPostsInput
-  content: String
-  id: Int
-  published: Boolean
-  title: String
-}
-
-input PostWhereUniqueInput {
-  id: Int
-}
-
 type Query {
   me: User
-  post(where: PostWhereUniqueInput!): Post
-  posts(skip: Int): [Post!]!
 }
 
 type User {
   id: Int!
   name: String
   role: String!
-}
-
-input UserCreateOneWithoutPostsInput {
-  connect: UserWhereUniqueInput
-  create: UserCreateWithoutPostsInput
-}
-
-input UserCreateWithoutPostsInput {
-  email: String!
-  name: String
-  password: String
-  role: String!
-}
-
-input UserUpdateOneWithoutPostsInput {
-  connect: UserWhereUniqueInput
-  create: UserCreateWithoutPostsInput
-  delete: Boolean
-  disconnect: Boolean
-  update: UserUpdateWithoutPostsDataInput
-  upsert: UserUpsertWithoutPostsInput
-}
-
-input UserUpdateWithoutPostsDataInput {
-  email: String
-  id: Int
-  name: String
-  password: String
-  role: String
-}
-
-input UserUpsertWithoutPostsInput {
-  create: UserCreateWithoutPostsInput!
-  update: UserUpdateWithoutPostsDataInput!
-}
-
-input UserWhereUniqueInput {
-  email: String
-  id: Int
 }
