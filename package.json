@@ -36,7 +36,7 @@
     "graphql-middleware": "4.0.2",
     "graphql-shield": "7.3.2",
     "graphql-tag": "^2.10.3",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "9.0.0",
     "micro-cors": "^0.1.1",
     "next": "^9.4.4",
     "next-iron-session": "^4.1.7",
